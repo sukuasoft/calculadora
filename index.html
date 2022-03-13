@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="plugins/bootstrap.css">
+    <style>
+        ::-webkit-inner-spin-button
+        {
+            display: none;
+        }
+    </style>
+    <title>Calculadora</title>
+</head>
+<body>
+    <nav class="navbar navbar-dark " style="background-color: rgb(233, 233, 233); border: 1px solid rgb(184, 184, 184);;">
+        <div class="container">
+            <a class="text-decoration-none" href=""><div style="font-size:40px; font-weight: bold;" class="text-secondary">Calculadora</div></a>
+        </div>
+    </nav>
+    <div style="margin-top: 20px;"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="numero1" class="text"><strong>Numero 1</strong></label>
+                <input id="numero1" type="number" class="form-control">
+            </div>
+
+            <div class="col-md-4">
+                <label for="operacao"><strong>Operação</strong></label>
+                <select  id="operacao"  class="form-select">
+                    <option value="0">--Escolha uma operação...</option>
+                    <option value="1">Adição</option>
+                    <option value="2">Subtração</option>
+                    <option value="3">Multiplicação</option>
+                    <option value="4">Divisão</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="numero2"><strong>Numero 2</strong></label>
+                <input id="numero2" type="number" class="form-control">
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20px"></div>
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-3"><button class="btn-primary btn form-control" id="btn-calcular">Calcular</button></div>
+        </div>
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-12"><input type="number" id="res" class="form-control" style="padding: 15px 10px;" readonly></div>
+        </div>
+    </div>
+
+    <script src="plugins/jquery-3.6.0.js"></script>
+    <script src="plugins/bootstrap.bundle.js"></script>
+    <script >
+        $(document).ready(
+            function () {
+                
+               $('#btn-calcular').on("click", function () {
+
+                    var numero1 = parseFloat($("#numero1").val());
+                   var numero2 = parseFloat($("#numero2").val());
+                   var operacao = parseInt($("#operacao").val());
+                   var res = 0.0;
+       
+                   
+                    switch (operacao) {
+        
+                        case 1:
+                             res = numero1 + numero2;
+                        break;
+                        case 2:
+                             res = numero1 - numero2;
+                        break;
+
+                        case 3:
+                            res = numero1 * numero2;
+                        break;
+                        case 4:
+                            res = numero1 / numero2; 
+                        break;
+                        default:
+                            alert('Escolha uma operação');
+                             return;
+                        break;
+                    }
+
+                    $('#res').val(res);
+               });
+
+        
+            }
+        );
+    </script>
+</body>
+</html>
